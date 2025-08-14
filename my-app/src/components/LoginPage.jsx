@@ -1,5 +1,5 @@
-import { useState } from "react"; 
-import "./LoginPage.css"; 
+import { useState } from "react" //ohhh dista kay
+import "./LoginPage.css"; //oh ha distay ithe sagla p
 
 export default function LoginPage() {
   const [role, setRole] = useState("student");
