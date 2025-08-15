@@ -8,20 +8,32 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-
+#vanta {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
 
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 70%;
   background: linear-gradient(135deg, #0f2027, #1b123f, #2c5364);
   font-family: 'Segoe UI', sans-serif;
   padding: 1rem;
+  border-radius: 20px;
+  border-color: rgb(aliceblue, rgb(152, 152, 209), rgb(34, 34, 79));
+  border-style: solid;
+  z-index: 1;
+  position: relative;
 }
-
 
 .login-card {
   background: rgba(255, 255, 255, 0.1);
@@ -152,3 +164,4 @@ form input:focus {
     font-size: 1.5rem;
   }
 }
+
