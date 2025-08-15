@@ -1,6 +1,6 @@
-import { useState } from "react" //ohhh dista kay
-import "./LoginPage.css"; //oh ha distay ithe sagla p
-
+import { useState } from "react" 
+import "./LoginPage.css"; // mi colour badalto thamb pahile bghu hotay ka...test # 1 ganpati bappa moryaaau
+//GANPATI BAPPA MORYAAAAAAAAAA
 export default function LoginPage() {
   const [role, setRole] = useState("student");
 
