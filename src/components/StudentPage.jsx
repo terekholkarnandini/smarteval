@@ -10,6 +10,7 @@ export default function StudentPage({ student }) {
         <li><span>Profile</span></li>
   <li><span>Analysis</span></li>
   <li><span>Attempt Quiz</span></li>
+  <li><span>Resources</span></li>
   
         </ul>
       </div>
