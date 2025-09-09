@@ -1,0 +1,82 @@
+/* Container */
+.student-dashboard {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+  }
+  
+  /* Sidebar - collapsed by default */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20px;
+    background: linear-gradient(135deg, #2d043b, #5d217f, #9017cd);
+  display: flex;
+    color: #ecf0f1;
+    overflow-x: hidden;
+    transition: width 0.3s ease;
+    padding-top: 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+  }
+  
+  /* Expand sidebar on hover */
+  .sidebar:hover {
+    width: 200px;
+  }
+  
+  /* Sidebar navigation */
+  .sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-nav li span {
+    position: relative;
+  }
+
+  .sidebar-nav li {
+    padding: 15px 35px;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(240, 240, 240);
+  }
+  
+  
+  .sidebar-nav li span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* slight gap under the text */
+  height: 2px;
+  width: 0;
+  background-color: #ecf0f1;
+  transition: width 0.3s ease;
+}
+
+  .sidebar-nav li:hover span::after { 
+    width: 100%;
+  }
+  
+  /* Main content with margin to avoid sidebar */
+  .main-content {
+    margin-left: 60px; /* collapsed sidebar width */
+    padding: 20px;
+    background : transparent;
+    flex-grow: 1;
+    transition: margin-left 0.3s ease;
+    min-height: 100vh;
+  }
+  
+  /* Shift main content on sidebar hover */
+  .sidebar:hover ~ .main-content {
+    margin-left: 200px; /* expanded sidebar width */
+  }
+  
