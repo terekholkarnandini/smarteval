@@ -1,16 +1,18 @@
-import { useState, useEffect, useRef } from "react";
-import "./LoginPage.css";
+import { useState, useRef, useEffect } from "react";
+import "./LoginPage.css"; // reuse same CSS for styling
 import FOG from "vanta/dist/vanta.fog.min";
 import * as THREE from "three";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";  
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [role, setRole] = useState("student");
-  const navigate = useNavigate(); // navigation hook
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const vantaRef = useRef(null);
   const vantaEffect = useRef(null);
+  const navigate = useNavigate();
 
+  // Vanta background
   useEffect(() => {
     if (!vantaEffect.current) {
       vantaEffect.current = FOG({
@@ -37,43 +39,36 @@ export default function LoginPage() {
     };
   }, []);
 
+  // Handle Signup
+  const handleSignup = async (e) => {
+    e.preventDefault();
 
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, role }),
+      });
 
-  const handleLogin = async (e) => {
-  e.preventDefault();
-
-  const email = e.target[0].value;
-  const password = e.target[1].value;
-
-  try {
-    const response = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, role }),
-    });
-
-    const data = await response.json();
-    if (response.ok) {
-      console.log(" Login success:", data);
-      localStorage.setItem("token", data.token);
-
-      if (role === "student") navigate("/student");
-      else navigate("/faculty");
-    } else {
-      alert(data.error);
+      const data = await response.json();
+      if (response.ok) {
+        alert("✅ Registered successfully! Please login.");
+        navigate("/login");
+      } else {
+        alert("❌ " + data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("⚠️ Something went wrong");
     }
-  } catch (err) {
-    console.error(" Error logging in:", err);
-  }
-};
-
+  };
 
   return (
     <>
       <div id="vanta" ref={vantaRef}></div>
       <div className="login-container">
         <div className="login-card">
-          <h1 className="title">SmartEval Login</h1>
+          <h1 className="title">SmartEval Sign Up</h1>
 
           {/* Role Switch */}
           <div className="role-switch">
@@ -91,17 +86,29 @@ export default function LoginPage() {
             </button>
           </div>
 
-          {/* Login Form */}
-          <form onSubmit={handleLogin}>
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
+          {/* Signup Form */}
+          <form onSubmit={handleSignup}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
             <button type="submit" className="login-btn">
-              Login as {role}
+              Sign up as {role}
             </button>
           </form>
 
           <p className="signup-text">
-            Don’t have an account? <Link to="/signup">Sign up</Link>
+            Already have an account? <a href="/login">Login</a>
           </p>
         </div>
       </div>
