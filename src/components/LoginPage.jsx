@@ -54,7 +54,7 @@ export default function LoginPage() {
 
     const data = await response.json();
     if (response.ok) {
-      console.log(" Login success:", data);
+      console.log("✅ Login success:", data);
       localStorage.setItem("token", data.token);
 
       if (role === "student") navigate("/student");
@@ -63,7 +63,7 @@ export default function LoginPage() {
       alert(data.error);
     }
   } catch (err) {
-    console.error(" Error logging in:", err);
+    console.error("❌ Error logging in:", err);
   }
 };
 
