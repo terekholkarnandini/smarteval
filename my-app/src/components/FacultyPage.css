@@ -3,9 +3,10 @@
   height: 100vh;
   margin: 0;
   display: flex;
+
 }
 
-/* Sidebar */
+
 .faculty-sidebar {
   position: fixed;
   top: 0;
@@ -23,10 +24,9 @@
 }
 
 .faculty-sidebar:hover {
-  width: 220px;
+  width: 280px;
 }
 
-/* Sidebar navigation */
 .faculty-sidebar-nav {
   list-style: none;
   padding: 0;
@@ -62,21 +62,21 @@
   width: 100%;
 }
 
-/* Main content */
+
 .faculty-main-content {
-  margin-left: 60px;
+  
   padding: 20px;
   background: linear-gradient(135deg, #0f2027, #1b123f, #2c5364);
   flex-grow: 1;
   transition: margin-left 0.3s ease;
   min-height: 100vh;
+  width:90vw;
 }
 
 .faculty-sidebar:hover ~ .faculty-main-content {
   margin-left: 220px;
 }
 
-/* Heading & Welcome Text */
 .faculty-heading {
   color: #4e0965;
   font-size: 24px;
@@ -89,7 +89,6 @@
   font-size: 16px;
 }
 
-/* Create Quiz Card */
 .create-quiz-card {
   background: linear-gradient(135deg, #5d217f, #9017cd);
   color: white;
@@ -117,7 +116,6 @@
   opacity: 0.9;
 }
 
-/* Create Quiz Button */
 .create-btn {
   padding: 12px 18px;
   background-color: white;

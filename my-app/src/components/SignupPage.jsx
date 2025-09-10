@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SignupPage() {
   const [role, setRole] = useState("student");
+  const [name, setName] = useState("");   // ✅ Added Name state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const vantaRef = useRef(null);
@@ -47,7 +48,7 @@ export default function SignupPage() {
       const response = await fetch("http://localhost:5000/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, role }),
+        body: JSON.stringify({ name, email, password, role }), // ✅ include name
       });
 
       const data = await response.json();
@@ -55,7 +56,7 @@ export default function SignupPage() {
         alert("✅ Registered successfully! Please login.");
         navigate("/login");
       } else {
-        alert("❌ " + data.message);
+        alert("❌ " + data.error || data.message);
       }
     } catch (error) {
       console.error(error);
@@ -88,6 +89,13 @@ export default function SignupPage() {
 
           {/* Signup Form */}
           <form onSubmit={handleSignup}>
+            <input
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
             <input
               type="email"
               placeholder="Email"

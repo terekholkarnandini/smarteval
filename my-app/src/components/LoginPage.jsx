@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function LoginPage() {
   const [role, setRole] = useState("student");
-  const navigate = useNavigate(); // navigation hook
+  const navigate = useNavigate(); 
   const vantaRef = useRef(null);
   const vantaEffect = useRef(null);
 
@@ -75,7 +75,6 @@ export default function LoginPage() {
         <div className="login-card">
           <h1 className="title">SmartEval Login</h1>
 
-          {/* Role Switch */}
           <div className="role-switch">
             <button
               className={role === "student" ? "active" : ""}
@@ -91,7 +90,7 @@ export default function LoginPage() {
             </button>
           </div>
 
-          {/* Login Form */}
+        
           <form onSubmit={handleLogin}>
             <input type="email" placeholder="Email" required />
             <input type="password" placeholder="Password" required />

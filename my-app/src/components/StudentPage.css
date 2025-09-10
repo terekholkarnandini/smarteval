@@ -1,12 +1,12 @@
-/* Container */
+
 .student-dashboard {
     font-family: Arial, sans-serif;
+    width:90vw;
     height: 100vh;
     margin: 0;
     display: flex;
   }
   
-  /* Sidebar - collapsed by default */
   .sidebar {
     position: fixed;
     top: 0;
@@ -22,13 +22,12 @@
     box-sizing: border-box;
     z-index: 1000;
   }
-  
-  /* Expand sidebar on hover */
+
   .sidebar:hover {
     width: 300px;
   }
   
-  /* Sidebar navigation */
+ 
   .sidebar-nav {
     list-style: none;
     padding: 0;
@@ -54,7 +53,7 @@
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px; /* slight gap under the text */
+  bottom: -4px; 
   height: 2px;
   width: 0;
   background-color: #ecf0f1;
@@ -64,10 +63,9 @@
   .sidebar-nav li:hover span::after { 
     width: 100%;
   }
-  
-  /* Main content with margin to avoid sidebar */
+ 
   .main-content {
-    margin-left: 60px; /* collapsed sidebar width */
+    margin-left: 60px; 
     padding: 20px;
     background : transparent;
     flex-grow: 1;
@@ -75,9 +73,42 @@
     min-height: 100vh;
   }
   
-  /* Shift main content on sidebar hover */
+
   .sidebar:hover ~ .main-content {
-    margin-left: 200px; /* expanded sidebar width */
+    margin-left: 200px; 
   }
   
-  
+  .section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.section-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.section-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.section-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+.section-card img {
+  width: 350px;
+  height: 200px;
+   
+  margin-bottom: 10px;
+}
